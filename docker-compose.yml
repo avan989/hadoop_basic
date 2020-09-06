@@ -1,0 +1,9 @@
+version: '3'
+services:
+    hadoop:
+        build: ./
+        ports:
+            - "8000:8000"
+        command: tail -f /dev/null
+        volumes: 
+            - "./:/usr/src"
