@@ -4,6 +4,7 @@ services:
     hadoop:
         build:
             context: .
+            dockerfile: ./Docker/Dockerfile
         ports:
             # Hdfs ports
             - "50010:50010"
