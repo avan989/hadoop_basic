@@ -25,4 +25,9 @@ services:
             # others
             - "49707:49707"
             - "2122:2122"
+            # spark
+            - "8080:8080"
+            - "7077:7077"
         command: tail -f /dev/null
+        volumes:
+            - "./share:/usr/local/share"
