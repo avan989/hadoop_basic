@@ -28,6 +28,7 @@ RUN cd /usr/local && ln -s ./spark-2.0.0-bin-hadoop2.7 spark
 ENV HADOOP_HOME=/usr/local/hadoop
 ENV YARN_HOME=$HADOOP_HOME
 ENV HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
+ENV PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
 
 ENV HIVE_HOME=/usr/local/hive
 ENV PATH=$HIVE_HOME/bin:$PATH
