@@ -51,6 +51,22 @@ RUN sed -i '/<name>hive.scratch.dir.permission<\/name>/!b;n;c<value>733<\/value>
 # make share folder
 RUN mkdir -p /usr/local/share
 
+# mongodb
+RUN yum -y update 
+ENV mongoDbPath=/etc/yum.repos.d/
+ENV mongoDBConfigFile=mongodb.repo
+ENV absMongoDBPath=$mongoDbPath$mongoDBConfigFile
+RUN mkdir -p $mongoDbPath
+
+RUN echo "[mongodb-org-4.4]" > $absMongoDBPath
+RUN echo "name=MongoDB Repository" >> $absMongoDBPath
+RUN echo "baseurl=https://repo.mongodb.org/yum/redhat/6/mongodb-org/4.4/x86_64/" >> $absMongoDBPath
+RUN echo "gpgcheck=0" >> $absMongoDBPath
+RUN echo "enabled=1" >> $absMongoDBPath
+#RUN echo "gpgkey=https://www.mongodb.org/static/pgp/server-3.4.asc" >> $absMongoDBPath
+
+RUN yum install -y mongodb-org
+
 ENTRYPOINT ["/usr/startup.sh"]
 
 

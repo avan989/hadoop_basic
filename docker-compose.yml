@@ -31,3 +31,5 @@ services:
         command: tail -f /dev/null
         volumes:
             - "./share:/usr/local/share"
+            - "./mongodbData:/data/db"
+        
